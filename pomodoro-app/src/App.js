@@ -16,6 +16,8 @@ class Animations extends React.Component{
     const length = this.props.lenId;
     console.log(length + 'length of animation');
     const duration = 60;
+    document.querySelector('body').style.animationDuration = length +"s";
+    //    document.getElementById('ocean').setAttribute("animation-duration", length+"s")
     return(
       <div class='sun' style={{"animation-name": "sunRising", "animation-duration": length+"s", "animation-iteration-count": "", "animation-play-state": play }}></div> 
     )
@@ -57,7 +59,7 @@ class App extends React.Component{
     this.state = {
       break: 5,
       session: 25,
-      timer: 60,
+      timer: 20,
       status: 'off',
       type: 'session',
       id:'',
@@ -78,13 +80,13 @@ class App extends React.Component{
   }
 
   timerOnClick(){
-  let a = this.state.status == 'off' ?
+  let a = this.state.status === 'off' ?
       (timeToPass= 
         this.setState({
         status: 'on',
         animationDuration: this.state.timer
         }),
-        document.body.style.animationDuration = this.state.animationDuration+'s',
+        //document.body.style.animationDuration = this.state.animationDuration+'s',
         document.body.style.animationPlayState='running',
       console.log('it works'),
       this.timer()
@@ -100,7 +102,7 @@ class App extends React.Component{
     curTime = new Date().getSeconds() + new Date().getMinutes()*60;
     timeToPass = curTime + this.state.timer
     var a =  setInterval(()=>{
-              if(this.state.status =='on'){
+              if(this.state.status ==='on'){
                 this.countDown();
                 this.checks()
               }
@@ -118,11 +120,14 @@ class App extends React.Component{
 
   checks(){
     if(setTime < 0){
-      //document.getElementById('beep').play()
+      document.querySelector('body').style.animationPlayState = "paused";
+      document.getElementsByClassName('sun')[0].style.animationPlayState = "paused";
       if (this.state.type === 'session') {
+        document.getElementById('beep').play();
         this.timerType('break', this.state.break*60);
         this.timer();
       } else{
+        document.getElementById('break-clip').play();
         this.timerType('session', this.state.session*60);
         this.timer();
       }
@@ -179,7 +184,7 @@ class App extends React.Component{
   calculatingTime(){
     let minutes = Math.floor(this.state.timer/60);
     let seconds = Math.floor(this.state.timer%60);
-    if(minutes == 0 && seconds == 0){
+    if(minutes === 0 && seconds === 0){
       this.play()
     }
     if(minutes < 10) {
@@ -192,8 +197,8 @@ class App extends React.Component{
   }
 
   play(){
-    var audio = document.getElementById('beep');
-    audio.play()
+    // var audio = document.getElementById('beep');
+    // audio.play()
   }
 
   resetTimer(){
@@ -209,6 +214,8 @@ class App extends React.Component{
     });
     document.getElementById('beep').pause();
     document.getElementById('beep').currentTime = 0;
+    document.getElementById('break-clip').pause();
+    document.getElementById('break-clip').currentTime = 0;
   }
 
   render(){
@@ -216,6 +223,8 @@ class App extends React.Component{
       <div id ='container'>
           <Animations title={this.state.type} lenId={this.state.animationDuration} status={this.state.status}/>
           <div class='cloud'/>
+            <div id='cloud1'></div>
+            <div id='cloud2'></div>
           <h1>Pomodoro Clock</h1>
           <div id='display'>
             <div id='setter'>
@@ -227,9 +236,9 @@ class App extends React.Component{
 
               <h2 id='timer-label'>{this.state.type}</h2>
               <p id='time-left'>{this.calculatingTime()}
-                <audio src='https://sampleswap.org/samples-ghost/VOCALS%20and%20SPOKEN%20WORD/FEMALE%20SINGING/159[kb]get_up_and_dance.aif.mp3' id='break-clip'></audio>
-                <audio id='beep' src='https://sampleswap.org/samples-ghost/MELODIC%20SAMPLES/SAMPLED%20MUSIC/1722[kb]bonanza-western-horse-whinny.wav.mp3'
-  />            </p>
+                <audio id='break-clip' src='https://sampleswap.org/samples-ghost/VOCALS%20and%20SPOKEN%20WORD/FEMALE%20SINGING/159[kb]get_up_and_dance.aif.mp3'/>
+                <audio id='beep' src='https://sampleswap.org/samples-ghost/MELODIC%20SAMPLES/SAMPLED%20MUSIC/1722[kb]bonanza-western-horse-whinny.wav.mp3'/> 
+              </p>
               <div id='buttons'>
 
                 <button id ='start_stop' onClick={this.timerOnClick}>
