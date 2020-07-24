@@ -59,7 +59,7 @@ class App extends React.Component{
     this.state = {
       break: 5,
       session: 25,
-      timer: 20,
+      timer: 1500,
       status: 'off',
       type: 'session',
       id:'',
