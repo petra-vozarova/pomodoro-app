@@ -174,18 +174,19 @@ button:focus{
 }
 
 @keyFrames sunRising {
-  0% {top:100%; left: -20%}
+  0% {top:140%; left: -90%}
   25% {top:60%; left: 15%}
   45% {top:35%; left: 35%}
   50%{ top:30%; left: 40% }
   55% {top:35%; left: 45%}
   75% {top:60%; left: 65%}
-  100% {top:100%; left: 100%}
+  98% {top:100%; left: 100%}
+  100% {top:120%; left: -40%}
 }
 
 .sun{
-  left:0%;
-  top:110%;
+  left:-100%;
+  top:130%;
   float: left;
   width: 20em;
   height: 20em;
@@ -195,15 +196,16 @@ button:focus{
   z-index:-3;
   animation-timing-function: linear;
   box-shadow: 0 0 20px 3px #F19261;
- /* animation: sunRising infinite;*/
+ /*animation: sunRising infinite;*/
 }
 
 @keyFrames skyChange{
-  0% {background-color: #304EA5;}
-  30% {background-color: #1099be;}
+  0% {background-color: #364e95;}
+  10% {background-color: #304EA5;}
+  35% {background-color: #1099be;}
   50% {background-color: #18C8F8;}
   85% {background-color: #0A2C90;}
-  100% {background-color: #07216e;}
+  100% {background-color: #203881;}
 }
 
 .cloud{
