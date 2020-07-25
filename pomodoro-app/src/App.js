@@ -7,17 +7,19 @@ class Animations extends React.Component{
   }
 
   render(){
-    if (this.props.status === 'on'){
-      var play = "running";
-    } else {
-      play = 'paused';
+    console.log(this.props.status)
+    var play ="paused";
+     if(this.props.status === 'on'){
+        play = "running";
+    }else{
+      document.body.style.animationPlayState="paused";
+      //document.getElementsByClassName('sun')[0].style.animationPlayState = "paused"
     }
     const length = this.props.lenId;
-    console.log(length + 'length of animation');
+   // console.log(length + 'length of animation');
     const duration = 60;
     document.querySelector('body').style.animationDuration = length +"s";
     document.querySelector('body').style.animationPlayState = play;
-    //    document.getElementById('ocean').setAttribute("animation-duration", length+"s")
     return(
       <div class='sun' id='Sun' style={{"animation-name": "sunRising", "animation-duration": length+"s", "animation-iteration-count": "1", "animation-play-state": play }}></div> 
     )
@@ -75,7 +77,7 @@ class App extends React.Component{
     this.timerOnClick = this.timerOnClick.bind(this)
     this.calculatingTime= this.calculatingTime.bind(this)
     this.resetTimer = this.resetTimer.bind(this)
-    this.play = this.play.bind(this)
+    //this.play = this.play.bind(this)
     this.timerType = this.timerType.bind(this)
   }
 
@@ -93,8 +95,9 @@ class App extends React.Component{
       ):
       (this.setState({
         status: 'off',
-        })
-      //document.body.style.animationPlayState='paused'
+        }),
+      document.body.style.animationPlayState='paused',
+      document.getElementsByClassName('sun')[0].style.animationPlayState = "paused"
       );
   }
 
@@ -120,12 +123,6 @@ class App extends React.Component{
 
   checks(){
     if(setTime < 0){
-
-      // document.getElementsByClassName('sun')[0].style.animationPlayState = "paused"
-      // document.getElementById('Sun').style.top= "110%";
-      // document.getElementById('Sun').style.left= "-20%";
-      //  document.querySelector('body').style.animationPlayState = "running";
-      //  document.getElementsByClassName('sun')[0].style.animationPlayState = "running";
       if (this.state.type === 'session') {
         //document.getElementById('beep').play();
         this.timerType('break', this.state.break*60);
@@ -188,9 +185,9 @@ class App extends React.Component{
   calculatingTime(){
     let minutes = Math.floor(this.state.timer/60);
     let seconds = Math.floor(this.state.timer%60);
-    if(minutes === 0 && seconds === 0){
-      this.play()
-    }
+    // if(minutes == 0 && seconds == 0){
+    //  // this.play();
+    // }
     if(minutes < 10) {
       minutes = '0' + minutes};
     if (seconds < 10) {
@@ -200,10 +197,10 @@ class App extends React.Component{
     return minutes + ':' + seconds
   }
 
-  play(){
-    // var audio = document.getElementById('beep');
-    // audio.play()
-  }
+  // play(){
+  //   // var audio = document.getElementById('beep');
+  //   // audio.play()
+  // }
 
   resetTimer(){
     //clearInterval(this.state.id)

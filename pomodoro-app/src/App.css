@@ -1,7 +1,7 @@
 body{
   width:100%;
   height: 100%;
-  -max-height: 100%;
+  max-height: 100%;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -21,9 +21,8 @@ body{
 }
 
 h1{
-  font-size: 4.5em;
+  font-size: 3.5em;
   color: 	#111;
-  padding-bottom: 1em;
   padding: 0.5em;
 }
 
@@ -31,15 +30,16 @@ h1{
  width: 50%;
  margin: 0 auto 0 auto;
  height: auto;
- font-size: 1.5em;
+ font-size: 1.1em;
 }
 
 #setter{
-  margin-top: 3em;
+  margin-top: 6em;
   padding: 0em;
   overflow: hidden;
   width: 100%;
-  font-size: 2em;
+  min-width: 100%;
+  font-size: 1.5em;
 }
 
 #break-decrement, #break-length, #break-increment{
@@ -51,8 +51,9 @@ h1{
 }
 
 #session-length, #break-length{
+  margin-top: 1em;
   font-size: 1.6em;
-  margin:0.5em;
+  margin-bottom:0.3em;
 }
 
 span{
@@ -106,7 +107,7 @@ button:focus{
 }
 
 #timer{
-  margin: 2em auto;
+  margin: 1em auto;
   border: 5px solid black;
   padding-top: 0;
   height: 100%;
@@ -116,7 +117,7 @@ button:focus{
   opacity: 0.7;
 }
 #timer-label{
-  font-size: 2.5em;
+  font-size: 2.3em;
 }
 
 #time-left{
@@ -158,10 +159,10 @@ button:focus{
   #display{
     width: 90%;
     margin: auto;
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   #setter{
-    font-size: 1em;
+    font-size: 0.8em;
     max-width: 100%;
     min-width: 90%;
   }
@@ -169,7 +170,7 @@ button:focus{
    width: auto;
   }
   #time-left{
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 
@@ -186,7 +187,7 @@ button:focus{
 
 .sun{
   left:-100%;
-  top:130%;
+  top:130%; 
   float: left;
   width: 20em;
   height: 20em;
