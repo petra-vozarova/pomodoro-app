@@ -21,7 +21,7 @@ class Animations extends React.Component{
     document.querySelector('body').style.animationDuration = length +"s";
     document.querySelector('body').style.animationPlayState = play;
     return(
-      <div class='sun' id='Sun' style={{"animation-name": "sunRising", "animation-duration": length+"s", "animation-iteration-count": "1", "animation-play-state": play }}></div> 
+      <div class='sun' id='Sun' style={{"animation-name": "sunRising", "animation-duration": length+"s", "animation-iteration-count": "infinite", "animation-play-state": play }}></div> 
     )
   }
 }
@@ -124,11 +124,11 @@ class App extends React.Component{
   checks(){
     if(setTime < 0){
       if (this.state.type === 'session') {
-        //document.getElementById('beep').play();
+        document.getElementById('beep').play();
         this.timerType('break', this.state.break*60);
         this.timer();
       } else{
-        //document.getElementById('break-clip').play();
+        document.getElementById('break-clip').play();
         this.timerType('session', this.state.session*60);
         this.timer();
       }
