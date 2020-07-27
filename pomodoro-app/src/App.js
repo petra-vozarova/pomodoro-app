@@ -16,7 +16,7 @@ class Animations extends React.Component{
       //document.getElementsByClassName('sun')[0].style.animationPlayState = "paused"
     }
     const length = this.props.lenId;
-   // console.log(length + 'length of animation');
+    console.log(length + 'length of animation');
     const duration = 60;
     document.querySelector('body').style.animationDuration = length +"s";
     document.querySelector('body').style.animationPlayState = play;
@@ -65,7 +65,7 @@ class App extends React.Component{
       status: 'off',
       type: 'session',
       id:'',
-      animationDuration: 1500
+      animationDuration: 1500,
     }
     
     this.changeBreakTime= this.changeBreakTime.bind(this)
@@ -86,7 +86,7 @@ class App extends React.Component{
       (timeToPass= 
         this.setState({
         status: 'on',
-        animationDuration: this.state.timer
+        //animationDuration: this.state.timer
         }),
         //document.body.style.animationDuration = this.state.animationDuration+'s',
         //document.body.style.animationPlayState='running',
@@ -139,7 +139,7 @@ class App extends React.Component{
     this.setState({
       type: type,
       timer: value,
-      animationDuration: value
+      animationDuration: value,
     })
   }
 
@@ -162,7 +162,8 @@ class App extends React.Component{
           });
           if(state ==='session'){
             this.setState({
-              timer: this.state.timer + 60
+              timer: this.state.timer + 60,
+              animationDuration: this.state.animationDuration + 60,
             })
           }
         }
@@ -174,7 +175,8 @@ class App extends React.Component{
           })
           if (state ==='session'){
             this.setState({
-              timer: this.state.timer - 60
+              timer: this.state.timer - 60,
+              animationDuration: this.state.animationDuration - 60,
             })
           }
         }
